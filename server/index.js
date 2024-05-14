@@ -134,49 +134,10 @@ async function processAndSaveDataPort(filePathPorts) {
 }
 
 
-// async function displayPortsOnMap() {
-//     try {
-      
-  
-//       // Add a marker for each port
-//       ports.forEach((port) => {
-//         const marker = new mapboxgl.Marker()
-//           .setLngLat(port.geometry.coordinates) // Set marker position based on port coordinates
-//           .setPopup(new mapboxgl.Popup({ offset: 25 }) // Add a popup with port name
-//             .setHTML(`<h3>${port.properties.port_name}</h3>`))
-//           .addTo(map);
-//       });
-  
-//     } catch (error) {
-//       console.error('Error fetching ports:', error);
-//     } finally {
-//       // Close the Mongoose connection
-//       await mongoose.disconnect();
-//     }
-//   }
-
-//   displayPortsOnMap();
-
 
 const filePathShips = './assets/geo_stats_data_7_days - geo_stats.csv';
 // const filePathShips = './geo1.csv';
 const filePathPorts = './assets/port.csv';
-
-app.get('/', async(req, res) => {
-    try {
-        const ports = await PortModel.find();
-        ports.forEach((port) => {
-          const marker = new mapboxgl.Marker()
-            .setLngLat(port.geometry.coordinates) // Set marker position based on port coordinates
-            .setPopup(new mapboxgl.Popup({ offset: 25 }) // Add a popup with port name
-              .setHTML(`<h3>${port.properties.port_name}</h3>`))
-            .addTo(map);
-        });
-    
-      } catch (error) {
-        console.error('Error fetching ports:', error);
-      } 
-})
 
 app.post('/populate_data_ship',async(req,res)=>{
     try {
